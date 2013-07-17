@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>Demo page - jQuery Responsive Headline by Thomas Kahn</title>
+
+<style>
+
+h1,h2,h3 {
+	font-family: sans-serif;
+	display: inline;
+	white-space: nowrap;
+}
+
+p {
+	margin: 0 0 15px 0;
+}
+
+.wrapper {
+	width: 50%;
+}
+
+</style>
+
+</head>
+
+<body>
+	<h1 id="BodyHeadline">This headline follows the body</h1>
+	<p>This headline follows the size of the document body. As you resize the browser window you'll see that the headline grows or shrinks depending on how wide you make the window. Since I have not set the max and min options for the font size it can in theory grow and shrink to any size.</p>
+
+	<hr>
+
+	<div class="wrapper">
+		<h1 id="WrapperHeadline">Follows a div</h1>
+		<p>This headline is inside a div (wrapper) whose width is set to 50%. Since i have not set a container option of my own, jQuery Responsive Headline will use the default one which is the parent. And the parent in this case is the wrapper div. So this headline will be about 50% of the body since its parent div is that size.</p>
+	</div>
+	
+	<hr>
+	
+	<h1 id="FollowsAnotherDiv">Follows the same div</h1>
+	<p>This headline element is a direct child of the body element but I have used the container option to override the default parent. Instead I have told it to follow the width of the wrapper div above. So eventhough this wrapper div is not the parent element of this headline I can still make it follow its size.</p>
+	
+	<hr>
+	<h1 id="MaxAndMin">This headline has a max and min value</h1>
+	<p>For this headline I have set a max and a min value that controls how big or small the headline can be. In this case the max value is set to 30 and the min value to 12. This means that the headline will grow or shrink within these boundaries (never bigger than 30px, never smaller than 12px). This can be useful if you want more control over the font sizes.
+	</p>
+	
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="jquery.ba-throttle-debounce.min.js"></script>
+<script src="jquery-responsive-headlines.js"></script>
+<script>
+	$(document).ready(function(){
+		$('h1#BodyHeadline').responsiveHeadlines();
+		$('h1#WrapperHeadline').responsiveHeadlines();
+		$('h1#FollowsAnotherDiv').responsiveHeadlines({container: 'wrapper'});
+		$('h1#MaxAndMin').responsiveHeadlines({maxFontSize: 30, minFontSize: 12});
+	});
+
+	
+	
+</script>
+</body>
+</html>
