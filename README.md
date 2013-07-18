@@ -1,16 +1,16 @@
 # jQuery Responsive Headlines #
 *by Thomas Kahn*
 
-A jQuery plugin for creating one-line headlines that adapt their size to the containing element.
+A jQuery plugin for creating responsive one-line headlines that adapt their size to the containing element.
 
 ## What does it do? ##
 With this jQuery plugin you can create responsive one-line headlines. Instead of wrapping the headline over several rows, this plugin adapts the text size to fit the width of its container on a single line.  
 
-A typical user scenario would be if you are building a responsive web site and you want the headlines (some or all) to fit on a single row. On a big screen you want a big headline (large font size) and on a smaller screen you want a smaller headline (small font size). And you want it to change in real time if the user changes the size of the browser window, Then you can use this plugin.
+A typical user scenario would be if you are building a responsive web site and you want the headlines (some or all) to fit on a single row. On a big screen you want a big headline (large font size) and on a smaller screen you want a smaller headline (small font size). And you want it to change in real time if the user changes the size of the browser window.
 
 It's build on top of [jQuery Boilerplate](http://jqueryboilerplate.com/).
 
-## Hot to use it ##
+## How to use it ##
 It works just like any other jquery plugin. 
 Here's a super simple example that turns all h1-tags on the page into responsive headlines:
 
