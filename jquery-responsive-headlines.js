@@ -101,6 +101,13 @@ for some reason don't want it just set the option useThrottleDebounce to false.
 			// Run the resize function
 			self.resizeText();
 			
+			// Event handler when all page assets are loaded
+			// This handles cases where this was triggered at DOMReady, but fonts/css/etc.
+			// load later that change the layout of the page
+			$(window).on("load", function() {
+				self.resizeText();
+			});
+			
 			// Event handler when the window is resized.
 			// To avoid too many calls to the resizeText function, which
 			// will lead to bad performance, I use Ben Almans jquery-throttle-debounce
