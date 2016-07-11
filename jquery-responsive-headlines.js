@@ -18,7 +18,7 @@ into responsive headlines:
 
    $('h1').responsiveHeadlines();
  
-There are also a handfull of options that you can use to customize
+There are also a handful of options that you can use to customize
 the behaviour of the plugin. The easiest way to understand what they
 do is read the comments in the source code below and do some experimentation
 on your own using the HTML demo page which accompanies this code in the
@@ -34,7 +34,7 @@ just to get you started:
 JQUERY THROTTLE/DEBOUNCE
 jQuery Responsive Headlines works best if you use it together with 
 Ben Alman's jquery-throttle-debounce plugin. It's a plugin for 
-controling/limiting the number of calls to a function. 
+controlling/limiting the number of calls to a function. 
 In this case it's very useful since the window resize event is triggered 
 very often and the function that determines the size of the text is 
 bound to this event. 
@@ -42,7 +42,7 @@ bound to this event.
 Ben Alman's project page: http://benalman.com/projects/jquery-throttle-debounce-plugin/
 Ben Alman's repository on GitHub: https://github.com/cowboy/jquery-throttle-debounce
 
-Per default jquery-trottle-debounce is used (the option useThrottleDebounce
+Per default jquery-throttle-debounce is used (the option useThrottleDebounce
 is set to true) and therefore I have included a copy of it in this repository.
 As I said, for performance reasons I recommend that you use it, but if you 
 for some reason don't want it just set the option useThrottleDebounce to false. 
@@ -101,6 +101,13 @@ for some reason don't want it just set the option useThrottleDebounce to false.
 			// Run the resize function
 			self.resizeText();
 			
+			// Event handler when all page assets are loaded
+			// This handles cases where this was triggered at DOMReady, but fonts/css/etc.
+			// load later that change the layout of the page
+			$(window).on("load", function() {
+				self.resizeText();
+			});
+			
 			// Event handler when the window is resized.
 			// To avoid too many calls to the resizeText function, which
 			// will lead to bad performance, I use Ben Almans jquery-throttle-debounce
@@ -110,9 +117,9 @@ for some reason don't want it just set the option useThrottleDebounce to false.
 			// Is jquery-throttle-debounce used?
 			if(o.useThrottleDebounce) {
 				
-				if(o.throttleDebounceParams.method === 'trottle') {
+				if(o.throttleDebounceParams.method === 'throttle') {
 					// Throttle method
-					$(window).on('resize', $.trottle(o.throttleDebounceParams.delay, o.throttleDebounceParams.no_trailing, function() {
+					$(window).on('resize', $.throttle(o.throttleDebounceParams.delay, o.throttleDebounceParams.no_trailing, function() {
 						self.resizeText();
 					}));
 				} else {
